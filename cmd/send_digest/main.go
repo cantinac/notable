@@ -4,7 +4,6 @@ import (
 	notable "github.com/cantinac/notable"
 	"log"
 	"os"
-	"strconv"
 )
 
 func main() {
