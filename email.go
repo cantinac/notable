@@ -3,7 +3,7 @@ package notable
 import (
 	"bytes"
 	"fmt"
-	"gopkg.in/gomail.v2"
+	sp "github.com/SparkPost/gosparkpost"
 	"log"
 	"regexp"
 	"text/template"
@@ -42,28 +42,28 @@ func Email() string {
 	return autolinkRegexp.ReplaceAllString(html.String(), "$1<a href=\"$2\">$2</a>")
 }
 
-func SendEmail(host string, port int, username, password, from_email, from_name, to_email, to_name string) {
-	dialer := gomail.NewDialer(host, port, username, password)
-	message := message(from_email, from_name, to_email, to_name)
+func SendEmail(apiKey string, toEmail string, fromEmail string) {
+	var sparky sp.Client
+  err := sparky.Init(&sp.Config{ApiKey: apiKey})
 
-	if err := dialer.DialAndSend(message); err != nil {
-		log.Fatal(err)
-	}
-}
+  if err != nil {
+    log.Fatalf("SparkPost client init failed: %s\n", err)
+  }
 
-func message(from_email, from_name, to_email, to_name string) *gomail.Message {
-	message := gomail.NewMessage()
+  tx := &sp.Transmission{
+    Recipients: []string{toEmail},
+    Content: sp.Content{
+      HTML:    Email(),
+      From:    fromEmail,
+      Subject: pluralize(len(Notes()), "Notable Announcement"),
+    },
+  }
+  id, _, err := sparky.Send(tx)
+  if err != nil {
+    log.Fatal(err)
+  }
 
-	message.SetAddressHeader("From", from_email, from_name)
-	message.SetAddressHeader("To", to_email, to_name)
-	message.SetHeader("Subject", subject())
-	message.SetBody("text/html", Email())
-
-	return message
-}
-
-func subject() string {
-	return pluralize(len(Notes()), "Notable Announcement")
+  log.Printf("Transmission sent with id [%s]\n", id)
 }
 
 func notesByCategory() []CategoryNotes {
