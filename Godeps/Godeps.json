@@ -1,22 +1,36 @@
 {
-	"ImportPath": "github.com/harvesthq/notable",
-	"GoVersion": "go1.5.3",
+	"ImportPath": "github.com/cantinac/notable",
+	"GoVersion": "go1.6",
+	"GodepVersion": "v66",
 	"Packages": [
 		"./..."
 	],
 	"Deps": [
 		{
+			"ImportPath": "github.com/SparkPost/gosparkpost",
+			"Rev": "d9005f7f09b06fca4f39ca8c605ca35bf5e7724d"
+		},
+		{
+			"ImportPath": "github.com/SparkPost/gosparkpost/events",
+			"Rev": "d9005f7f09b06fca4f39ca8c605ca35bf5e7724d"
+		},
+		{
+			"ImportPath": "github.com/certifi/gocertifi",
+			"Comment": "2016.02.28",
+			"Rev": "83743a3d420d4e108138899019219346c9664071"
+		},
+		{
 			"ImportPath": "github.com/garyburd/redigo/internal",
-			"Rev": "9d4db5d1dbeff473d50e1bb82f5405c8cca0f0ac"
+			"Rev": "8873b2f1995f59d4bcdd2b0dc9858e2cb9bf0c13"
 		},
 		{
 			"ImportPath": "github.com/garyburd/redigo/redis",
-			"Rev": "9d4db5d1dbeff473d50e1bb82f5405c8cca0f0ac"
+			"Rev": "8873b2f1995f59d4bcdd2b0dc9858e2cb9bf0c13"
 		},
 		{
 			"ImportPath": "github.com/nlopes/slack",
-			"Comment": "v0.0.1-45-g0c92f27",
-			"Rev": "0c92f27523cc9e3ed470d628f1dd6839b14f88fe"
+			"Comment": "v0.0.1-104-ge337a73",
+			"Rev": "e337a7316d3fe9aa55b7063035d6d32f3dbcaeb9"
 		},
 		{
 			"ImportPath": "github.com/soveran/redisurl",
@@ -24,12 +38,7 @@
 		},
 		{
 			"ImportPath": "golang.org/x/net/websocket",
-			"Rev": "66f0418ca41253f8d1a024eb9754e9441a8e79b9"
-		},
-		{
-			"ImportPath": "gopkg.in/gomail.v2",
-			"Comment": "2.0.0-15-g5ceb8e6",
-			"Rev": "5ceb8e65415e45e1262fb385212b8193b55c0f99"
+			"Rev": "96dbb961a39ddccf16860cdd355bfa639c497f23"
 		}
 	]
 }
