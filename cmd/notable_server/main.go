@@ -3,7 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	notable "github.com/harvesthq/notable"
+	notable "github.com/cantinac/notable"
 	"log"
 	"net/http"
 	"net/url"

@@ -1,7 +1,7 @@
 package main
 
 import (
-	notable "github.com/harvesthq/notable"
+	notable "github.com/cantinac/notable"
 	"log"
 	"os"
 	"strconv"
